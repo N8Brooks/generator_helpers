@@ -1,3 +1,4 @@
+import { map } from "./map.ts";
 import { take } from "./take.ts";
 
 /** Patch Generator typing */
@@ -31,18 +32,6 @@ function main() {
   const propertyDescriptors = iteratorHelpers.map(iteratorHelperToProperty);
   const propertyDescriptorMap = Object.fromEntries(propertyDescriptors);
   Object.defineProperties(GeneratorFunction, propertyDescriptorMap);
-}
-
-/** Allows users to apply a function to every element returned from an iterator. */
-function* map<T, U>(
-  this: Generator<T>,
-  mapperFn: CallbackFn<T, U>,
-): Generator<U> {
-  let index = 0;
-  for (const value of this) {
-    yield mapperFn(value, index);
-    index += 1;
-  }
 }
 
 /** Allows users to skip values from an iterator which do not pass a filter function. */
