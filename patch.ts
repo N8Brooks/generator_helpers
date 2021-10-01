@@ -1,3 +1,4 @@
+import { filter } from "./filter.ts";
 import { map } from "./map.ts";
 import { take } from "./take.ts";
 import { toArray } from "./to_array.ts";
@@ -33,20 +34,6 @@ function main() {
   const propertyDescriptors = iteratorHelpers.map(iteratorHelperToProperty);
   const propertyDescriptorMap = Object.fromEntries(propertyDescriptors);
   Object.defineProperties(GeneratorFunction, propertyDescriptorMap);
-}
-
-/** Allows users to skip values from an iterator which do not pass a filter function. */
-function* filter<T, U>(
-  this: Generator<T>,
-  filtererFn: CallbackFn<T, U>,
-): Generator<T> {
-  let index = 0;
-  for (const value of this) {
-    if (filtererFn(value, index)) {
-      yield value;
-    }
-    index += 1;
-  }
 }
 
 /** Returns an `Array` of name and object of property descriptors. */
