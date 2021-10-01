@@ -1,8 +1,11 @@
+import { take } from "./take.ts";
+
 /** Patch Generator typing */
 declare global {
   interface Generator {
     map: typeof map;
     filter: typeof filter;
+    take: typeof take;
     toArray: typeof toArray;
   }
 }
@@ -12,10 +15,12 @@ export interface CallbackFn<T, U> {
   (value: T, index: number): U;
 }
 
+/** Array of helpers added to `Generator`. */
 const iteratorHelpers = [
   map,
   filter,
   toArray,
+  take,
 ];
 
 main(); // apply monkey-patch

@@ -4,7 +4,7 @@ import {
 } from "https://deno.land/std@0.108.0/testing/asserts.ts";
 import { range } from "./patch.ts";
 
-for (const n of [NaN, -Infinity, Infinity, 1 / 7, 0.5, Math.PI]) {
+for (const n of [NaN, -Infinity, 0.5, 1 / 7, Math.PI, Infinity]) {
   Deno.test(n.toString(), () => {
     assertThrows(
       () => [...range(n)],
