@@ -1,3 +1,4 @@
+import { asIndexedPairs } from "./as_indexed_pairs.ts";
 import { drop } from "./drop.ts";
 import { filter } from "./filter.ts";
 import { map } from "./map.ts";
@@ -12,6 +13,7 @@ declare global {
     filter: typeof filter;
     take: typeof take;
     drop: typeof drop;
+    asIndexedPairs: typeof asIndexedPairs;
     toArray: typeof toArray;
   }
 }
@@ -27,6 +29,7 @@ export const iteratorHelpers = [
   filter,
   take,
   drop,
+  asIndexedPairs,
   toArray,
 ];
 
