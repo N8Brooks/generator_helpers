@@ -1,5 +1,6 @@
 import { map } from "./map.ts";
 import { take } from "./take.ts";
+import { toArray } from "./to_array.ts";
 
 /** Patch Generator typing */
 declare global {
@@ -20,8 +21,8 @@ export interface CallbackFn<T, U> {
 const iteratorHelpers = [
   map,
   filter,
-  toArray,
   take,
+  toArray,
 ];
 
 main(); // apply monkey-patch
@@ -46,11 +47,6 @@ function* filter<T, U>(
     }
     index += 1;
   }
-}
-
-/** Transforms a generator to an array. */
-function toArray<T>(this: Generator<T>): T[] {
-  return [...this];
 }
 
 /** Returns an `Array` of name and object of property descriptors. */
