@@ -1,16 +1,31 @@
+/** Patch Generator typing */
+declare global {
+  interface Generator {
+    map: typeof map;
+    filter: typeof filter;
+    toArray: typeof toArray;
+  }
+}
+
+/** Callback function type used for some iterator helpers. */
+export interface CallbackFn<T, U> {
+  (value: T, index: number): U;
+}
+
 const iteratorHelpers = [
   map,
+  filter,
   toArray,
 ];
 
 main(); // apply monkey-patch
 
-/** Patch Generator typing */
-declare global {
-  interface Generator {
-    map: typeof map;
-    toArray: typeof toArray;
-  }
+/** Applies iterator helper monkey-patch. */
+function main() {
+  const GeneratorFunction = Object.getPrototypeOf(function* () {}).prototype;
+  const propertyDescriptors = iteratorHelpers.map(iteratorHelperToProperty);
+  const propertyDescriptorMap = Object.fromEntries(propertyDescriptors);
+  Object.defineProperties(GeneratorFunction, propertyDescriptorMap);
 }
 
 /** Yields `stop` `numbers` from `0` to `stop - 1`. */
@@ -23,15 +38,10 @@ export function* range(stop: number): Generator<number> {
   }
 }
 
-/** Callback function type used for some iterator helpers. */
-interface CallbackFunction<T, U> {
-  (value: T, index: number): U;
-}
-
 /** Allows users to apply a function to every element returned from an iterator. */
 function* map<T, U>(
   this: Generator<T>,
-  mapperFn: CallbackFunction<T, U>,
+  mapperFn: CallbackFn<T, U>,
 ): Generator<U> {
   let index = 0;
   for (const value of this) {
@@ -40,17 +50,23 @@ function* map<T, U>(
   }
 }
 
+/** Allows users to skip values from an iterator which do not pass a filter function. */
+function* filter<T, U>(
+  this: Generator<T>,
+  filtererFn: CallbackFn<T, U>,
+): Generator<T> {
+  let index = 0;
+  for (const value of this) {
+    if (filtererFn(value, index)) {
+      yield value;
+    }
+    index += 1;
+  }
+}
+
 /** Transforms a generator to an array. */
 function toArray<T>(this: Generator<T>): T[] {
   return [...this];
-}
-
-/** Applies iterator helper monkey-patch. */
-function main() {
-  const GeneratorFunction = Object.getPrototypeOf(function* () {}).prototype;
-  const propertyDescriptors = iteratorHelpers.map(iteratorHelperToProperty);
-  const propertyDescriptorMap = Object.fromEntries(propertyDescriptors);
-  Object.defineProperties(GeneratorFunction, propertyDescriptorMap);
 }
 
 /** Returns an `Array` of name and object of property descriptors. */
