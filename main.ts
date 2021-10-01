@@ -1,3 +1,4 @@
+import { drop } from "./drop.ts";
 import { filter } from "./filter.ts";
 import { map } from "./map.ts";
 import { range } from "./range.ts";
@@ -10,6 +11,7 @@ declare global {
     map: typeof map;
     filter: typeof filter;
     take: typeof take;
+    drop: typeof drop;
     toArray: typeof toArray;
   }
 }
@@ -24,6 +26,7 @@ export const iteratorHelpers = [
   map,
   filter,
   take,
+  drop,
   toArray,
 ];
 
