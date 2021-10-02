@@ -5,6 +5,7 @@ import { flatMap } from "./flat_map.ts";
 import { map } from "./map.ts";
 import { range } from "./range.ts";
 import { take } from "./take.ts";
+import { reduce } from "./reduce.ts";
 import { toArray } from "./to_array.ts";
 
 /** Patch Generator typing */
@@ -16,6 +17,7 @@ declare global {
     drop: typeof drop;
     asIndexedPairs: typeof asIndexedPairs;
     flatMap: typeof flatMap;
+    reduce: typeof reduce;
     toArray: typeof toArray;
   }
 }
@@ -23,6 +25,11 @@ declare global {
 /** Callback function type used for some iterator helpers. */
 export interface CallbackFn<T, U> {
   (value: T, index: number): U;
+}
+
+/** Reducer function used for reduce. */
+export interface ReducerFn<T, U> {
+  (previousValue: U, currentValue: T, index: number): U;
 }
 
 /** Array of helpers added to `Generator`. */
@@ -33,6 +40,7 @@ export const iteratorHelpers = [
   drop,
   asIndexedPairs,
   flatMap,
+  reduce,
   toArray,
 ];
 
