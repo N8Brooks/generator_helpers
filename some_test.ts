@@ -18,11 +18,11 @@ Deno.test("truthy", () => {
 });
 
 Deno.test("falsy index", () => {
-  const actual = range(5).some((value, index) => index === 6);
+  const actual = range(5).some((_, index) => index === 6);
   assertEquals(actual, false);
 });
 
 Deno.test("truthy index", () => {
-  const actual = range(5).some((value, index) => index === 4);
+  const actual = range(5).some((_, index) => index === 4);
   assertEquals(actual, true);
 });

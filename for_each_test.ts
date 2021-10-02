@@ -4,7 +4,7 @@ import { range } from "./range.ts";
 
 Deno.test("n = 0", () => {
   let called = false;
-  const callbackFn = (value: number) => {
+  const callbackFn = () => {
     called = true;
   };
   range(0).forEach(callbackFn);
