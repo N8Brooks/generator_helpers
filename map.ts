@@ -1,4 +1,4 @@
-import { CallbackFn } from "./main.ts";
+import { CallbackFn } from "./function_types.ts";
 
 /** Allows users to apply a function to every element returned from an iterator. */
 export function* map<T, U>(

@@ -1,4 +1,4 @@
-import { CallbackFn } from "./main.ts";
+import { CallbackFn } from "./function_types.ts";
 
 /** Allows users to skip values from an iterator which do not pass a filter function. */
 export function* filter<T, U>(

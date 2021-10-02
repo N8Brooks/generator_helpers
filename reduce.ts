@@ -1,4 +1,4 @@
-import { ReducerFn } from "./main.ts";
+import { ReducerFn } from "./function_types.ts";
 
 export function reduce<T, U>(
   this: Generator<T>,

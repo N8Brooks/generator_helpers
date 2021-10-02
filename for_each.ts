@@ -1,4 +1,4 @@
-import { CallbackFn } from "./main.ts";
+import { CallbackFn } from "./function_types.ts";
 
 export function forEach<T, U>(
   this: Generator<T>,
