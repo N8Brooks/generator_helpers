@@ -1,6 +1,6 @@
 import "./main.ts";
 import { assertEquals } from "https://deno.land/std@0.108.0/testing/asserts.ts";
-import { range } from "./utility_generators.ts";
+import { range } from "./range.ts";
 
 Deno.test("n=0", () => {
   const actual = range(0).find((_: number) => true);

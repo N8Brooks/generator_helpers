@@ -3,7 +3,7 @@ import {
   assertEquals,
   assertThrows,
 } from "https://deno.land/std@0.108.0/testing/asserts.ts";
-import { range } from "./utility_generators.ts";
+import { range } from "./range.ts";
 
 Deno.test("-1", () => {
   assertThrows(() => range(10).drop(-1).toArray());

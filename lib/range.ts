@@ -7,10 +7,3 @@ export function* range(stop: number): Generator<number> {
     yield i;
   }
 }
-
-/** Turns an iterable into an object. */
-export function* iter<T>(iterable: Iterable<T>): Generator<T> {
-  for (const value of iterable) {
-    yield value;
-  }
-}

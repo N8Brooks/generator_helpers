@@ -1,17 +1,17 @@
 import "./function_types.ts";
 import { asIndexedPairs } from "./as_indexed_pairs.ts";
 import { drop } from "./drop.ts";
-import { filter } from "./filter.ts";
-import { flatMap } from "./flat_map.ts";
-import { map } from "./map.ts";
-import { range } from "./utility_generators.ts";
-import { take } from "./take.ts";
-import { reduce } from "./reduce.ts";
-import { toArray } from "./to_array.ts";
-import { forEach } from "./for_each.ts";
-import { some } from "./some.ts";
 import { every } from "./every.ts";
+import { filter } from "./filter.ts";
 import { find } from "./find.ts";
+import { flatMap } from "./flat_map.ts";
+import { forEach } from "./for_each.ts";
+import { map } from "./map.ts";
+import { take } from "./take.ts";
+import { toArray } from "./to_array.ts";
+import { range } from "./range.ts";
+import { reduce } from "./reduce.ts";
+import { some } from "./some.ts";
 
 /** main Generator typing */
 declare global {

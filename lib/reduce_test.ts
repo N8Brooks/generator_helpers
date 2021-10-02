@@ -3,8 +3,8 @@ import {
   assertEquals,
   assertThrows,
 } from "https://deno.land/std@0.108.0/testing/asserts.ts";
-import { range } from "./utility_generators.ts";
-import { iter } from "./utility_generators.ts";
+import { range } from "./range.ts";
+import { Iterator } from "./Iterator.ts";
 
 function add(a: number, b: number): number {
   return a + b;
@@ -36,7 +36,7 @@ Deno.test("n=0 with initial value of 10", () => {
   assertEquals(actual, expected);
 });
 
-Deno.test("n=2 with inital value of -1", () => {
+Deno.test("n=2 with initial value of -1", () => {
   const actual = range(2).reduce(add, -1);
   const expected = 0;
   assertEquals(actual, expected);
@@ -51,7 +51,7 @@ Deno.test("n = 5 with initial value of Infinity", () => {
 Deno.test("U is different than t", () => {
   const input = [[1, 2], [3, 4], [5, 6, 7], [], [8]];
   const reducerFn = (a: number, b: number[]): number => a + b.length;
-  const actual = iter(input).reduce(reducerFn, 2);
+  const actual = Iterator.from(input).reduce(reducerFn, 2);
   const expected = 10;
   assertEquals(actual, expected);
 });
@@ -59,7 +59,7 @@ Deno.test("U is different than t", () => {
 Deno.test("reduce on index", () => {
   const input = [[1, 2], [3, 4], [5, 6, 7], [], [8]];
   const reducerFn = (a: number, _: number[], i: number): number => a + i;
-  const actual = iter(input).reduce(reducerFn, 0);
+  const actual = Iterator.from(input).reduce(reducerFn, 0);
   const expected = 10;
   assertEquals(actual, expected);
 });
