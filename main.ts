@@ -9,6 +9,7 @@ import { reduce } from "./reduce.ts";
 import { toArray } from "./to_array.ts";
 import { forEach } from "./for_each.ts";
 import { some } from "./some.ts";
+import { every } from "./every.ts";
 
 /** main Generator typing */
 declare global {
@@ -23,6 +24,7 @@ declare global {
     toArray: typeof toArray;
     forEach: typeof forEach;
     some: typeof some;
+    every: typeof every;
   }
 }
 
@@ -38,6 +40,7 @@ export const iteratorHelpers = [
   toArray,
   forEach,
   some,
+  every,
 ];
 
 /** Generator function prototype. */
