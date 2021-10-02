@@ -1,5 +1,6 @@
 import { CallbackFn } from "./function_types.ts";
 
+/** Produces all elements of the iterators produced by applying the mapping function to the elements produced by the underlying iterator. */
 export function* flatMap<T, U>(
   this: Iterable<T>,
   mapperFn: CallbackFn<T, Iterable<U>>,

@@ -1,5 +1,6 @@
 import { CallbackFn } from "./function_types.ts";
 
+/** Returns `true` if all values of the generator return a truthy value from a predicate function. */
 export function every<T, U>(
   this: Generator<T>,
   callbackFn: CallbackFn<T, U>,

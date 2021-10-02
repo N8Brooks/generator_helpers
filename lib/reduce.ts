@@ -1,5 +1,6 @@
 import { ReducerFn } from "./function_types.ts";
 
+/** Applies a function to every element returned from a generator, while keeping track of the most recent result of the reducer. */
 export function reduce<T, U>(
   this: Generator<T>,
   reducerFn: ReducerFn<T, U>,

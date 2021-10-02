@@ -1,5 +1,6 @@
 import { CallbackFn } from "./function_types.ts";
 
+/** Checks if any value in the generator matches a given predicate function. */
 export function some<T, U>(
   this: Generator<T>,
   callbackFn: CallbackFn<T, U>,
