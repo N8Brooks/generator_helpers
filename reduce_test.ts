@@ -3,8 +3,8 @@ import {
   assertEquals,
   assertThrows,
 } from "https://deno.land/std@0.108.0/testing/asserts.ts";
-import { range } from "./range.ts";
-import { iter } from "./iter.ts";
+import { range } from "./utility_generators.ts";
+import { iter } from "./utility_generators.ts";
 
 function add(a: number, b: number): number {
   return a + b;

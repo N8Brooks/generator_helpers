@@ -3,7 +3,7 @@ import { drop } from "./drop.ts";
 import { filter } from "./filter.ts";
 import { flatMap } from "./flat_map.ts";
 import { map } from "./map.ts";
-import { range } from "./range.ts";
+import { range } from "./utility_generators.ts";
 import { take } from "./take.ts";
 import { reduce } from "./reduce.ts";
 import { toArray } from "./to_array.ts";

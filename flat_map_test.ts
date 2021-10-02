@@ -1,6 +1,6 @@
 import "./main.ts";
 import { assertEquals } from "https://deno.land/std@0.108.0/testing/asserts.ts";
-import { iter } from "./iter.ts";
+import { iter } from "./utility_generators.ts";
 
 Deno.test("n = 0", () => {
   const actual = [...[].flatMap((value) => value)];
