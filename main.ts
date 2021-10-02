@@ -7,6 +7,7 @@ import { range } from "./range.ts";
 import { take } from "./take.ts";
 import { reduce } from "./reduce.ts";
 import { toArray } from "./to_array.ts";
+import { forEach } from "./for_each.ts";
 
 /** Patch Generator typing */
 declare global {
@@ -19,6 +20,7 @@ declare global {
     flatMap: typeof flatMap;
     reduce: typeof reduce;
     toArray: typeof toArray;
+    forEach: typeof forEach;
   }
 }
 
@@ -42,6 +44,7 @@ export const iteratorHelpers = [
   flatMap,
   reduce,
   toArray,
+  forEach,
 ];
 
 /** Generator function prototype. */
