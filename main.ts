@@ -10,6 +10,7 @@ import { toArray } from "./to_array.ts";
 import { forEach } from "./for_each.ts";
 import { some } from "./some.ts";
 import { every } from "./every.ts";
+import { find } from "./find.ts";
 
 /** main Generator typing */
 declare global {
@@ -25,6 +26,7 @@ declare global {
     forEach: typeof forEach;
     some: typeof some;
     every: typeof every;
+    find: typeof find;
   }
 }
 
@@ -41,6 +43,7 @@ export const iteratorHelpers = [
   forEach,
   some,
   every,
+  find,
 ];
 
 /** Generator function prototype. */
