@@ -49,9 +49,9 @@ export const iteratorHelpers = [
 /** Generator function prototype. */
 export const GeneratorFunction = Object.getPrototypeOf(range).prototype;
 
-main(); // apply monkey-main
+main(); // apply monkey-patch
 
-/** Applies iterator helper monkey-main. */
+/** Applies iterator helper monkey-patch. */
 function main() {
   const propertyDescriptors = iteratorHelpers.map(iteratorHelperToProperty);
   const propertyDescriptorMap = Object.fromEntries(propertyDescriptors);
