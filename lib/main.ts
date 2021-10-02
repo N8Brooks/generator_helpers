@@ -1,3 +1,4 @@
+import "./function_types.ts";
 import { asIndexedPairs } from "./as_indexed_pairs.ts";
 import { drop } from "./drop.ts";
 import { filter } from "./filter.ts";
@@ -49,19 +50,17 @@ export const iteratorHelpers = [
 /** Generator function prototype. */
 export const GeneratorFunction = Object.getPrototypeOf(range).prototype;
 
-main(); // apply monkey-patch
-
 /** Applies iterator helper monkey-patch. */
-function main() {
-  const propertyDescriptors = iteratorHelpers.map(iteratorHelperToProperty);
+export function main(): void {
+  const propertyDescriptors = iteratorHelpers.map(helperToPropertyDescriptor);
   const propertyDescriptorMap = Object.fromEntries(propertyDescriptors);
   Object.defineProperties(GeneratorFunction, propertyDescriptorMap);
 }
 
 /** Returns an `Array` of name and object of property descriptors. */
-export function iteratorHelperToProperty(
+export function helperToPropertyDescriptor(
   helper: typeof iteratorHelpers[number],
-) {
+): [string, PropertyDescriptor] {
   return [helper.name, {
     writable: true,
     enumerable: false,
@@ -69,3 +68,5 @@ export function iteratorHelperToProperty(
     value: helper,
   }];
 }
+
+main(); // apply monkey-patch
