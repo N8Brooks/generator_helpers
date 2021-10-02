@@ -1,4 +1,4 @@
-import "./patch.ts";
+import "./main.ts";
 import {
   assertEquals,
   assertThrows,

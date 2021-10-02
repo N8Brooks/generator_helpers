@@ -1,4 +1,4 @@
-import "./patch.ts";
+import "./main.ts";
 import { assertEquals } from "https://deno.land/std@0.108.0/testing/asserts.ts";
 import { range } from "./range.ts";
 

@@ -9,7 +9,7 @@ import { reduce } from "./reduce.ts";
 import { toArray } from "./to_array.ts";
 import { forEach } from "./for_each.ts";
 
-/** Patch Generator typing */
+/** main Generator typing */
 declare global {
   interface Generator {
     map: typeof map;
@@ -50,9 +50,9 @@ export const iteratorHelpers = [
 /** Generator function prototype. */
 export const GeneratorFunction = Object.getPrototypeOf(range).prototype;
 
-main(); // apply monkey-patch
+main(); // apply monkey-main
 
-/** Applies iterator helper monkey-patch. */
+/** Applies iterator helper monkey-main. */
 function main() {
   const propertyDescriptors = iteratorHelpers.map(iteratorHelperToProperty);
   const propertyDescriptorMap = Object.fromEntries(propertyDescriptors);

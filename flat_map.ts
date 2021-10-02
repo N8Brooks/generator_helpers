@@ -1,4 +1,4 @@
-import { CallbackFn } from "./patch.ts";
+import { CallbackFn } from "./main.ts";
 
 export function* flatMap<T, U>(
   this: Iterable<T>,

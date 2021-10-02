@@ -1,4 +1,4 @@
-import { CallbackFn } from "./patch.ts";
+import { CallbackFn } from "./main.ts";
 
 /** Allows users to skip values from an iterator which do not pass a filter function. */
 export function* filter<T, U>(
