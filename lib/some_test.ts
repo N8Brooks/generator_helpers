@@ -2,7 +2,7 @@ import "./main.ts";
 import { assertEquals } from "https://deno.land/std@0.108.0/testing/asserts.ts";
 import { range } from "./range.ts";
 
-Deno.test("n=0", () => {
+Deno.test("n = 0", () => {
   const callbackFn = (value: number) => !!value;
   const actual = range(0).some(callbackFn);
   assertEquals(callbackFn(1), true);

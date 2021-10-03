@@ -3,7 +3,7 @@ import { assertEquals } from "https://deno.land/std@0.108.0/testing/asserts.ts";
 import { Iterator } from "./Iterator.ts";
 import { range } from "./range.ts";
 
-Deno.test("n=0", () => {
+Deno.test("n = 0", () => {
   const actual = [...Iterator.from(range(0))];
   assertEquals(actual, []);
 });

@@ -10,7 +10,7 @@ function add(a: number, b: number): number {
   return a + b;
 }
 
-Deno.test("n=0", () => {
+Deno.test("n = 0", () => {
   assertThrows(
     () => range(0).reduce(add),
     TypeError,
@@ -18,7 +18,7 @@ Deno.test("n=0", () => {
   );
 });
 
-Deno.test("n=1", () => {
+Deno.test("n = 1", () => {
   const actual = range(1).reduce(add);
   const expected = 0;
   assertEquals(actual, expected);
@@ -30,13 +30,13 @@ Deno.test("n = 5", () => {
   assertEquals(actual, expected);
 });
 
-Deno.test("n=0 with initial value of 10", () => {
+Deno.test("n = 0 with initial value of 10", () => {
   const actual = range(0).reduce(add, 10);
   const expected = 10;
   assertEquals(actual, expected);
 });
 
-Deno.test("n=2 with initial value of -1", () => {
+Deno.test("n = 2 with initial value of -1", () => {
   const actual = range(2).reduce(add, -1);
   const expected = 0;
   assertEquals(actual, expected);

@@ -1,4 +1,3 @@
-import "./function_types.ts";
 import { asIndexedPairs } from "./as_indexed_pairs.ts";
 import { drop } from "./drop.ts";
 import { every } from "./every.ts";
