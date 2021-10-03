@@ -8,7 +8,9 @@ function* range(stop: number) {
 }
 
 Deno.test("n = 0", () => {
-  const actual = range(0).every((value) => value);
+  const callbackFn = (value: number) => value;
+  const actual = range(0).every(callbackFn);
+  assertEquals(callbackFn(1), 1);
   assertEquals(actual, true);
 });
 

@@ -14,6 +14,8 @@ Deno.test("n = 0", () => {
   };
   range(0).forEach(callbackFn);
   assertEquals(called, false);
+  callbackFn();
+  assertEquals(called, true);
 });
 
 Deno.test("n = 5", () => {
