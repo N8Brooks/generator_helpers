@@ -27,6 +27,7 @@ Additionally `range` is provided as a helper generator as well as the
 `Iterator.from` method.
 
 - `range(stop)`
+- `range(start, stop [, step = 1 ])`
 - [`.from(object)`](https://github.com/tc39/proposal-iterator-helpers#fromobject)
 
 ## Examples
@@ -58,9 +59,11 @@ assertEquals(uppercase, "ABC");
 
 ### `range(limit)` and `.reduce(reducer [, initialValue ])`
 
-The `range(stop)` function is not included in iterator-helpers proposal, but is
-included as a utility. It yields from `0` up to, but not included, the `stop`
-parameter.
+The `range(stop)` or `range(start, stop [, step = 1 ])` function is not included
+in iterator-helpers proposal, but is included as a utility. It yields from `0`
+up to, but not included, the `y0` parameter. If `y1` and `yd` are provided it
+yields from `y0` until `y1` with steps of `yd`. The `yd` parameter is `1` by
+default.
 
 The `.reduce(reducer [, initialValue ])` method applies the `reducer` function
 to each value using the previous result for for the first parameter. The first
