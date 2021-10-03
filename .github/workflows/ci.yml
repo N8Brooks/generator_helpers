@@ -51,6 +51,7 @@ jobs:
           files: cov.lcov
 
       - name: Remove Coverage
+        shell: bash
         run: |
           rm -rf cov
           rm cov.lcov
