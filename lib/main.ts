@@ -8,7 +8,6 @@ import { forEach } from "./for_each.ts";
 import { map } from "./map.ts";
 import { take } from "./take.ts";
 import { toArray } from "./to_array.ts";
-import { range } from "./range.ts";
 import { reduce } from "./reduce.ts";
 import { some } from "./some.ts";
 
@@ -46,8 +45,14 @@ export const iteratorHelpers = [
   find,
 ];
 
+/** Used to grab prototype */
+// deno-lint-ignore require-yield
+export function* generator(): Generator<void> {
+  return;
+}
+
 /** Generator function prototype. */
-export const GeneratorFunction = Object.getPrototypeOf(range).prototype;
+export const GeneratorFunction = Object.getPrototypeOf(generator).prototype;
 
 /** Applies iterator helper monkey-patch. */
 export function main(): void {

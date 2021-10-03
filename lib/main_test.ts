@@ -2,7 +2,7 @@ import {
   assertEquals,
   assertStrictEquals,
 } from "https://deno.land/std@0.108.0/testing/asserts.ts";
-import { GeneratorFunction, iteratorHelpers } from "./main.ts";
+import { generator, GeneratorFunction, iteratorHelpers } from "./main.ts";
 
 for (const helper of iteratorHelpers) {
   Deno.test(helper.name, () => {
@@ -20,6 +20,10 @@ for (const helper of iteratorHelpers) {
   });
 }
 
-Deno.test("generator", () => {
+Deno.test("Generator", () => {
   assertStrictEquals(GeneratorFunction.toString(), "[object Generator]");
+});
+
+Deno.test("generator", () => {
+  assertEquals([...generator()], []);
 });
