@@ -3,12 +3,7 @@ import {
   assertEquals,
   assertThrows,
 } from "https://deno.land/std@0.108.0/testing/asserts.ts";
-
-function* range(stop: number) {
-  for (let n = 0; n < stop; n++) {
-    yield n;
-  }
-}
+import { range } from "./range.ts";
 
 for (const n of [NaN, Infinity, -Infinity]) {
   Deno.test(`range(${n})`, () => {

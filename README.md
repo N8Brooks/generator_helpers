@@ -4,11 +4,12 @@
 
 This module monkey patches
 [proposal-iterator-helpers](https://github.com/tc39/proposal-iterator-helpers)
-onto TypeScript generators. After importing this module, methods that can
-normally only be used on arrays can also be used on generators. Methods that
-take a function as an argument are given each `value` and `index` as parameters.
-A list of all monkey patched methods is provided below. Check the
-proposal-iterator-helpers repository for more information and examples.
+onto JavaScript or TypeScript generators. After importing this module, methods
+that can normally only be used on arrays can also be used on generators. Methods
+that take a function as an argument are given the `value` and `index` of
+elements as parameters. A list of all monkey patched methods is provided below.
+Check the proposal-iterator-helpers repository for more information and
+examples.
 
 - [`.map(mapperFn)`](https://github.com/tc39/proposal-iterator-helpers#mapmapperfn)
 - [`.filter(filtererFn)`](https://github.com/tc39/proposal-iterator-helpers#filterfiltererfn)
