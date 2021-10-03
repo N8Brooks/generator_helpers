@@ -3,8 +3,10 @@ import { assertEquals } from "https://deno.land/std@0.108.0/testing/asserts.ts";
 import { Iterator } from "./Iterator.ts";
 
 Deno.test("n = 0", () => {
-  const actual = [...[].flatMap((value) => value)];
+  const callbackFn = (value: number[]) => value;
+  const actual = [...[].flatMap(callbackFn)];
   assertEquals(actual, []);
+  assertEquals(callbackFn([]), []);
 });
 
 Deno.test("n = 0 (nested)", () => {
