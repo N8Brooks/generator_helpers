@@ -8,8 +8,10 @@ function* range(stop: number) {
 }
 
 Deno.test("n = 0", () => {
-  const actual = range(0).find((_: number) => true);
+  const callbackFn = (_: number) => true;
+  const actual = range(0).find(callbackFn);
   assertEquals(actual, undefined);
+  assertEquals(callbackFn(0), true);
 });
 
 Deno.test("falsy", () => {

@@ -8,9 +8,11 @@ Deno.test("n = 0", () => {
 });
 
 Deno.test("n = 0 (nested)", () => {
+  const callbackFn = (value: number[]) => value;
   const iterable = [[], [], []];
-  const actual = [...Iterator.from(iterable).flatMap((value) => value)];
+  const actual = [...Iterator.from(iterable).flatMap(callbackFn)];
   assertEquals(actual, []);
+  assertEquals(callbackFn([]), []);
 });
 
 Deno.test("n = 1", () => {
