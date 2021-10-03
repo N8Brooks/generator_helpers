@@ -3,8 +3,13 @@ import {
   assertEquals,
   assertThrows,
 } from "https://deno.land/std@0.108.0/testing/asserts.ts";
-import { range } from "./range.ts";
 import { Iterator } from "./Iterator.ts";
+
+function* range(stop: number) {
+  for (let n = 0; n < stop; n++) {
+    yield n;
+  }
+}
 
 function add(a: number, b: number): number {
   return a + b;
