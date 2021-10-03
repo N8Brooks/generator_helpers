@@ -56,10 +56,82 @@ Deno.test("U is different than t", () => {
   assertEquals(actual, expected);
 });
 
-Deno.test("reduce on index", () => {
+Deno.test("reduce on arrays", () => {
   const input = [[1, 2], [3, 4], [5, 6, 7], [], [8]];
-  const reducerFn = (a: number, _: number[], i: number): number => a + i;
-  const actual = Iterator.from(input).reduce(reducerFn, 0);
-  const expected = 10;
+  const reducerFn = (a: number | number[], b: number[]): number => {
+    if (Array.isArray(a)) {
+      return a.length + b.length;
+    } else {
+      return a + b.length;
+    }
+  };
+  const actual = Iterator.from(input).reduce(reducerFn);
+  const expected = 8;
   assertEquals(actual, expected);
+});
+
+Deno.test("reduce on previous with initialValue", () => {
+  const input = [8, -1, -1, -1, -1];
+  const previous: number[] = [];
+  const reducerFn = (a: number, _b: number, _i: number): number => {
+    previous.push(a);
+    return 2 * a;
+  };
+  assertEquals(Iterator.from(input).reduce(reducerFn, 2), 64);
+  assertEquals(previous, [2, 4, 8, 16, 32]);
+});
+
+Deno.test("reduce on previous without initialValue", () => {
+  const input = [8, -1, -1, -1, -1];
+  const previous: number[] = [];
+  const reducerFn = (a: number, _b: number, _i: number): number => {
+    previous.push(a);
+    return 2 * a;
+  };
+  assertEquals(Iterator.from(input).reduce(reducerFn), 128);
+  assertEquals(previous, [8, 16, 32, 64]);
+});
+
+Deno.test("reduce on current with initialValue", () => {
+  const input = [11, 22, 33, 44];
+  const current: number[] = [];
+  const reducerFn = (_a: number, b: number, _i: number): number => {
+    current.push(b);
+    return 0;
+  };
+  assertEquals(Iterator.from(input).reduce(reducerFn, 99), 0);
+  assertEquals(current, [11, 22, 33, 44]);
+});
+
+Deno.test("reduce on current without initialValue", () => {
+  const input = [11, 22, 33, 44];
+  const current: number[] = [];
+  const reducerFn = (_a: number, b: number, _i: number): number => {
+    current.push(b);
+    return 0;
+  };
+  assertEquals(Iterator.from(input).reduce(reducerFn), 0);
+  assertEquals(current, [22, 33, 44]);
+});
+
+Deno.test("reduce on index with initialValue", () => {
+  const input = "abcdefg";
+  const indices: number[] = [];
+  const reducerFn = (_a: string, _b: string, i: number): string => {
+    indices.push(i);
+    return "";
+  };
+  assertEquals(Iterator.from(input).reduce(reducerFn, ""), "");
+  assertEquals(indices, [0, 1, 2, 3, 4, 5, 6]);
+});
+
+Deno.test("reduce on index without initialValue", () => {
+  const input = "abcdefg";
+  const indices: number[] = [];
+  const reducerFn = (_a: string, _b: string, i: number): string => {
+    indices.push(i);
+    return "";
+  };
+  assertEquals(Iterator.from(input).reduce(reducerFn), "");
+  assertEquals(indices, [1, 2, 3, 4, 5, 6]);
 });

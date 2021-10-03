@@ -7,13 +7,17 @@ export function reduce<T, U>(
   initialValue?: U,
 ): U {
   const iterator = this[Symbol.iterator]();
-  let previousValue: U = initialValue === undefined
-    ? iterator.next().value
-    : initialValue;
-  if (previousValue === undefined) {
-    throw TypeError("Reduce of empty generator with no initial value");
+  let previousValue: U, index: number;
+  if (initialValue === undefined) {
+    previousValue = iterator.next().value;
+    index = 1;
+    if (previousValue === undefined) {
+      throw TypeError("Reduce of empty generator with no initial value");
+    }
+  } else {
+    previousValue = initialValue;
+    index = 0;
   }
-  let index = 0;
   for (const currentValue of iterator) {
     previousValue = reducerFn(previousValue, currentValue, index);
     index += 1;
