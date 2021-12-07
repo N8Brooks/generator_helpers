@@ -1,4 +1,4 @@
-import "./main.ts";
+import "./monkey_patch.ts";
 import { assertEquals } from "https://deno.land/std@0.108.0/testing/asserts.ts";
 import { Iterator } from "./iterator.ts";
 
