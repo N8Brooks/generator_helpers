@@ -18,7 +18,7 @@ function* range(start: number, stop?: number, step = 1): Generator<number> {
   }
 
   if (stop === undefined) {
-    // start is treated as the stop, step is ignored.
+    // Start is treated as the stop, step is ignored.
     for (let n = 0; n < start; n++) {
       yield n;
     }
@@ -28,7 +28,7 @@ function* range(start: number, stop?: number, step = 1): Generator<number> {
   }
 
   if (step === 0 || !Number.isSafeInteger(step)) {
-    throw RangeError("range() step argument must be a non-zero safe integer");
+    throw RangeError("range() step must be a non-zero safe integer");
   } else if (Math.floor(start - stop) / step < 0) {
     // Based on cpython implementation
     stop += (((start - stop) % step) + step) % step;
