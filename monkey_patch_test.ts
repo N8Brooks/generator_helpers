@@ -2,7 +2,11 @@ import {
   assertEquals,
   assertStrictEquals,
 } from "https://deno.land/std@0.108.0/testing/asserts.ts";
-import { generator, GeneratorFunction, iteratorHelpers } from "./main.ts";
+import {
+  generator,
+  GeneratorFunction,
+  iteratorHelpers,
+} from "./monkey_patch.ts";
 
 for (const helper of iteratorHelpers) {
   Deno.test(helper.name, () => {
