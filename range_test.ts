@@ -35,10 +35,26 @@ for (
     assertThrows(
       () => [...range(0, 10, n)],
       RangeError,
-      "range() step argument must be a non-zero safe integer",
+      "range() step must be a non-zero safe integer",
     );
   });
 }
+
+Deno.test(`range(Infinity, 10)`, () => {
+  assertThrows(
+    () => [...range(Infinity, 10)],
+    RangeError,
+    "range() start must be a safe integer",
+  );
+});
+
+Deno.test(`range(0, 11, 0)`, () => {
+  assertThrows(
+    () => [...range(0, 10, 0)],
+    RangeError,
+    "range() step must be a non-zero safe integer",
+  );
+});
 
 for (const n of [-100, -1, 0]) {
   Deno.test(`range(${n})`, () => {
@@ -53,14 +69,6 @@ for (const n of [1, 10, 100]) {
     assertEquals(actual, expected);
   });
 }
-
-Deno.test(`range(0, 11, 0)`, () => {
-  assertThrows(
-    () => [...range(0, 10, 0)],
-    RangeError,
-    "range() step argument must be a non-zero safe integer",
-  );
-});
 
 for (const y0 of [-5, 0, 1, 4, 10]) {
   for (const y1 of [-5, 0, 1, 4, 10]) {
