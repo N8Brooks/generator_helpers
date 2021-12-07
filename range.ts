@@ -1,30 +1,42 @@
-/** Yields `stop` `numbers` from `0` to `stop - 1`. */
-export function* range(y0: number, y1?: number, yd = 1): Generator<number> {
-  if (!Number.isFinite(y0)) {
-    throw RangeError("range() y0 must be a finite number");
+/** Yields integers from `0` to `stop` */
+function range(stop: number): Generator<number>;
+
+/** Yields integers from `start` to `stop` */
+function range(start: number, stop: number): Generator<number>;
+
+/** Yields integers from `start` to `stop` with the given `step` size */
+function range(start: number, stop: number, step: number): Generator<number>;
+
+/** Implementation of range */
+function* range(start: number, stop?: number, step = 1): Generator<number> {
+  if (!Number.isSafeInteger(start)) {
+    throw RangeError(
+      stop === undefined
+        ? "range() stop must be a safe integer"
+        : "range() start must be a safe integer",
+    );
   }
 
-  if (y1 === undefined) {
-    // y0 is treated as the stop, yd is ignored.
-    for (let n = 0; n < y0; n++) {
+  if (stop === undefined) {
+    // start is treated as the stop, step is ignored.
+    for (let n = 0; n < start; n++) {
       yield n;
     }
     return;
-  } else if (!Number.isFinite(y1)) {
-    throw RangeError("range() y1 must be a finite number");
+  } else if (!Number.isSafeInteger(stop)) {
+    throw RangeError("range() stop must be a safe integer");
   }
 
-  if (yd === 0 || !Number.isFinite(yd)) {
-    throw RangeError("range() yd argument must be a non-zero finite number");
-  } else if (yd < 0) {
-    // increment
-    for (let n = y0; n > y1; n += yd) {
-      yield n;
-    }
-  } else {
-    // decrement
-    for (let n = y0; n < y1; n += yd) {
-      yield n;
+  if (step === 0 || !Number.isSafeInteger(step)) {
+    throw RangeError("range() step argument must be a non-zero safe integer");
+  } else if (Math.floor(start - stop) / step < 0) {
+    // Based on cpython implementation
+    stop += (((start - stop) % step) + step) % step;
+    while (start !== stop) {
+      yield start;
+      start += step;
     }
   }
 }
+
+export { range };
