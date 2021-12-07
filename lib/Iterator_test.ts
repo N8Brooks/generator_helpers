@@ -1,6 +1,6 @@
 import "./main.ts";
 import { assertEquals } from "https://deno.land/std@0.108.0/testing/asserts.ts";
-import { Iterator } from "./Iterator.ts";
+import { Iterator } from "./iterator.ts";
 
 function* range(stop: number) {
   for (let n = 0; n < stop; n++) {
