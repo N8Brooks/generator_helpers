@@ -1,3 +1,3 @@
-export * from "./lib/range.ts";
-export * from "./lib/main.ts";
-export * from "./lib/iterator.ts";
+export * from "./range.ts";
+export * from "./main.ts";
+export * from "./iterator.ts";
