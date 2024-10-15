@@ -83,7 +83,7 @@ assertEquals(sum, 45);
 
 ### `.flatMap(mapperFn)`
 
-The `.flatMap(mapperFn)` method the results from calls to `mapperFn`. Thereby
+The `.flatMap(mapperFn)` method flattens the results from calls to `mapperFn`. Thereby
 flattening the generator one level.
 
 ```ts
